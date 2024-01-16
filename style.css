@@ -1,0 +1,356 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --bg-main-color: #08040e;
+    --bg-color: #7429ec;
+    --text-color: #fff;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--bg-main-color);
+}
+
+/* Main-container */
+.main-container {
+    position: relative;
+    top: 0;
+    width: 750px;
+    height: 450px;
+    border: 2px solid var(--bg-color);
+    background: transparent;
+    box-shadow: 0 0 20px var(--bg-color);
+    overflow: hidden;
+}
+
+/* form-box style */
+.main-container .form-box {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* form-box login style */
+.main-container .form-box.login {
+    left: 0;
+    padding: 0 60px 0 40px;
+}
+
+.main-container .form-box.login .animation {
+    transform: translateX(0);
+    transition: .7s ease;
+    opacity: 1;
+    filter: blur(0);
+    transition: .7s;
+    transition-delay: calc(.1s * var(--j));
+}
+
+.main-container.active .form-box.login .animation {
+    transform: translateX(-120%);
+    transition-delay: calc(.1s * var(--i));
+    opacity: 0;
+    filter: blur(10px);
+}
+
+/* form-box register style */
+.main-container .form-box.register {
+    right: 0;
+    padding: 0 40px 0 60px;
+    pointer-events: none;
+}
+
+.main-container .form-box.register {
+    pointer-events: auto;
+}
+
+.main-container .form-box.register .animation {
+    transform: translateX(120%);
+    transition: .7s ease;
+    opacity: 0;
+    filter: blur(10px);
+    transition-delay: calc(.1s * var(--j));
+}
+
+.main-container.active .form-box.register .animation {
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+    transition-delay: calc(.1s * var(--i));
+}
+
+/* form-box interiour design */
+.form-box h2 {
+    font-size: 32px;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.form-box .input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 25px 0;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    padding-right: 23px;
+    font-size: 16px;
+    color: var(--text-color);
+    font-weight: 500;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid var(--text-color);
+}
+
+.input-box input:focus,
+.input-box input:valid {
+    border-bottom-color: var(--bg-color);
+}
+
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: var(--text-color);
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: -5px;
+    color: var(--bg-color);
+}
+
+.input-box i {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: var(--text-color);
+    transition: .5s;
+}
+
+.input-box input:focus~i,
+.input-box input:valid~i {
+    color: var(--bg-color);
+}
+
+/* button design */
+.btn {
+    position: relative;
+    width: 100%;
+    height: 45px;
+    background: transparent;
+    border: 2px solid var(--bg-color);
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-color);
+    z-index: 1;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 300%;
+    background: linear-gradient(var(--bg-main-color), var(--bg-color), var(--bg-main-color), var(--bg-color));
+    z-index: -1;
+    transition: .5s;
+}
+
+.btn:hover::before {
+    top: 0;
+}
+
+/* info-text design */
+.form-box .reglog-text {
+    font-size: 14.5px;
+    color: var(--text-color);
+    text-align: center;
+    margin: 20px 0 10px;
+}
+
+.reglog-text p a {
+    color: var(--bg-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.reglog-text p a:hover {
+    text-decoration: underline;
+}
+
+.main-container .info-text {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* info-text login design */
+.main-container .info-text.login {
+    right: 0;
+    text-align: right;
+    padding: 0 40px 60px 150px;
+}
+
+.main-container .info-text.login .animation {
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+    transition: .7s ease;
+    transition-delay: calc(.1s * var(--j));
+
+}
+
+.main-container.active .info-text.login .animation {
+    transform: translateX(120%);
+    transition-delay: calc(.1s * var(--i));
+    opacity: 0;
+    filter: blur(10px);
+}
+
+/* info-text register design */
+.main-container .info-text.register {
+    left: 0;
+    text-align: left;
+    padding: 0 150px 60px 40px;
+    pointer-events: none;
+}
+
+.main-container.active .info-text.register {
+    pointer-events: none;
+}
+
+.main-container .info-text.register .animation {
+    transform: translateX(-120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition: .7s ease;
+    transition-delay: calc(.1s * var(--j));
+}
+
+.main-container.active .info-text.register .animation {
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+    transition-delay: calc(.1s * var(--i));
+}
+
+/* info-text interiour design */
+.info-text h2 {
+    font-size: 36px;
+    color: var(--text-color);
+    line-height: 1.3;
+    text-transform: uppercase;
+}
+
+.info-text p {
+    font-size: 16px;
+    color: var(--text-color);
+}
+
+/* animation design */
+.main-container .bg-animation {
+    position: absolute;
+    top: -4px;
+    right: 0;
+    width: 850px;
+    height: 600px;
+    background: linear-gradient(45deg, var(--bg-main-color), var(--bg-color));
+    border-bottom: 3px solid var(--bg-color);
+    transform: rotate(10deg) skewY(40deg);
+    transform-origin: bottom right;
+    transition: 1.5s ease;
+    transition-delay: 1.6s;
+}
+
+.main-container.active .bg-animation {
+    transform: rotate(0) skewY(0);
+    transition-delay: .5s;
+}
+
+.main-container .bg-2-animation {
+    position: absolute;
+    top: 100%;
+    left: 250px;
+    width: 850px;
+    height: 700px;
+    background: var(--bg-main-color);
+    border-top: 3px solid var(--bg-color);
+    transform: rotate(0) skewY(0);
+    transform-origin: bottom left;
+    transition: 1.5s ease;
+    transition-delay: .5s;
+}
+
+.main-container.active .bg-2-animation {
+    transform: rotate(-11deg) skewY(-41deg);
+    transition-delay: 1.2s;
+}
+
+/* text animation design */
+.text-animation {
+    white-space: normal;
+    overflow: hidden;
+    animation: typing 10s steps(20) 1s 5, blink-caret 1s step-end 9s;
+}
+
+@keyframes typing {
+    0% {
+        width: 0;
+    }
+
+    50% {
+        width: 100%;
+    }
+
+    0% {
+        width: 0;
+    }
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: var(--bg-color);
+    }
+}
+
+.text-animation:hover {
+    animation: none;
+}
